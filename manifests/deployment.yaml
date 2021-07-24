@@ -2,16 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
-    tag: alpine
-  name: nginx-alpine
+    app: clock
+  name: nginx-alpine-clock
   namespace: demo
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx
-      tag: alpine
+      app: clock
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,11 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
-        tag: alpine
+        app: clock
     spec:
       containers:
-      - image: viveksahu26/python-helloworld:alpine
+        - image: viveksahu26/clock:latest
         imagePullPolicy: IfNotPresent
         name: nginx-alpine
         resources:
