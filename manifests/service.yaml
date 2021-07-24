@@ -3,13 +3,13 @@ kind: Service
 metadata:
   labels:
     app: clock
-  name: nginx-alpine
+  name: clock
   namespace: demo
 spec:
   ports:
-  - port: 8111
+  - port: 80
     protocol: TCP
-    targetPort: 8111
+    targetPort: 80
   selector:
     app: clock
   type: NodePort
